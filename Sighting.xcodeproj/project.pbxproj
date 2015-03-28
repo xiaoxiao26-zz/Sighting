@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		231C5FB9C6375C427C173A29 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBF6336216BFD51FB295BDF /* libPods.a */; };
+		7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */; };
+		7F4A41FB1AC6670300FBC7A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */; };
+		7F908CC01AC63D1700197D00 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CBF1AC63D1700197D00 /* LoginViewController.m */; };
+		7F908CC31AC63D2100197D00 /* DashBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CC21AC63D2100197D00 /* DashBoardViewController.m */; };
+		7F908CC51AC63EA700197D00 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F908CC41AC63EA700197D00 /* MapKit.framework */; };
+		7F908CC81AC6439B00197D00 /* NavLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CC71AC6439B00197D00 /* NavLoginViewController.m */; };
+		7F908CCB1AC6464800197D00 /* LocationManagerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */; };
+		7F908CCE1AC6546400197D00 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CCD1AC6546400197D00 /* MapViewController.m */; };
+		7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CD11AC65E1C00197D00 /* GroupsViewController.m */; };
+		7FDA12271AC637B0001C7474 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12261AC637B0001C7474 /* main.m */; };
+		7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12291AC637B0001C7474 /* AppDelegate.m */; };
+		7FDA12301AC637B0001C7474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDA122E1AC637B0001C7474 /* Main.storyboard */; };
+		7FDA12321AC637B0001C7474 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDA12311AC637B0001C7474 /* Images.xcassets */; };
+		7FDA12351AC637B0001C7474 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FDA12331AC637B0001C7474 /* LaunchScreen.xib */; };
+		7FDA12411AC637B0001C7474 /* SightingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12401AC637B0001C7474 /* SightingTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FDA123B1AC637B0001C7474 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FDA12191AC637B0001C7474 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FDA12201AC637B0001C7474;
+			remoteInfo = Sighting;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
+		7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
+		7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7F908CBE1AC63D1700197D00 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7F908CBF1AC63D1700197D00 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7F908CC11AC63D2100197D00 /* DashBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoardViewController.h; sourceTree = "<group>"; };
+		7F908CC21AC63D2100197D00 /* DashBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoardViewController.m; sourceTree = "<group>"; };
+		7F908CC41AC63EA700197D00 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7F908CC61AC6439B00197D00 /* NavLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavLoginViewController.h; sourceTree = "<group>"; };
+		7F908CC71AC6439B00197D00 /* NavLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavLoginViewController.m; sourceTree = "<group>"; };
+		7F908CC91AC6464800197D00 /* LocationManagerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManagerSingleton.h; sourceTree = "<group>"; };
+		7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManagerSingleton.m; sourceTree = "<group>"; };
+		7F908CCC1AC6546400197D00 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		7F908CCD1AC6546400197D00 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		7F908CD01AC65E1C00197D00 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		7F908CD11AC65E1C00197D00 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		7FDA12211AC637B0001C7474 /* Sighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FDA12251AC637B0001C7474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FDA12261AC637B0001C7474 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7FDA12281AC637B0001C7474 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7FDA12291AC637B0001C7474 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7FDA122F1AC637B0001C7474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7FDA12311AC637B0001C7474 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7FDA12341AC637B0001C7474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7FDA123A1AC637B0001C7474 /* SightingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SightingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FDA123F1AC637B0001C7474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FDA12401AC637B0001C7474 /* SightingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SightingTests.m; sourceTree = "<group>"; };
+		8DBF6336216BFD51FB295BDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2E586C5E1F6EF7922A7005D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C163CC96A43849E63AB4C4B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7FDA121E1AC637B0001C7474 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F4A41FB1AC6670300FBC7A5 /* QuartzCore.framework in Frameworks */,
+				7F908CC51AC63EA700197D00 /* MapKit.framework in Frameworks */,
+				231C5FB9C6375C427C173A29 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FDA12371AC637B0001C7474 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CCEBCCB7026077DE0EA1BE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */,
+				7F908CC41AC63EA700197D00 /* MapKit.framework */,
+				8DBF6336216BFD51FB295BDF /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B51BD8210E40918DD45F52F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C163CC96A43849E63AB4C4B8 /* Pods.debug.xcconfig */,
+				A2E586C5E1F6EF7922A7005D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7F908CCF1AC654E600197D00 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7F908CBE1AC63D1700197D00 /* LoginViewController.h */,
+				7F908CBF1AC63D1700197D00 /* LoginViewController.m */,
+				7F908CC61AC6439B00197D00 /* NavLoginViewController.h */,
+				7F908CC71AC6439B00197D00 /* NavLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		7FDA12181AC637B0001C7474 = {
+			isa = PBXGroup;
+			children = (
+				7FDA12231AC637B0001C7474 /* Sighting */,
+				7FDA123D1AC637B0001C7474 /* SightingTests */,
+				7FDA12221AC637B0001C7474 /* Products */,
+				5B51BD8210E40918DD45F52F /* Pods */,
+				2CCEBCCB7026077DE0EA1BE5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7FDA12221AC637B0001C7474 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA12211AC637B0001C7474 /* Sighting.app */,
+				7FDA123A1AC637B0001C7474 /* SightingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7FDA12231AC637B0001C7474 /* Sighting */ = {
+			isa = PBXGroup;
+			children = (
+				7F908CCF1AC654E600197D00 /* Login */,
+				7FDA12281AC637B0001C7474 /* AppDelegate.h */,
+				7FDA12291AC637B0001C7474 /* AppDelegate.m */,
+				7FDA122E1AC637B0001C7474 /* Main.storyboard */,
+				7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */,
+				7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */,
+				7F908CD01AC65E1C00197D00 /* GroupsViewController.h */,
+				7F908CD11AC65E1C00197D00 /* GroupsViewController.m */,
+				7F908CCC1AC6546400197D00 /* MapViewController.h */,
+				7F908CCD1AC6546400197D00 /* MapViewController.m */,
+				7F908CC91AC6464800197D00 /* LocationManagerSingleton.h */,
+				7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */,
+				7F908CC11AC63D2100197D00 /* DashBoardViewController.h */,
+				7F908CC21AC63D2100197D00 /* DashBoardViewController.m */,
+				7FDA12311AC637B0001C7474 /* Images.xcassets */,
+				7FDA12331AC637B0001C7474 /* LaunchScreen.xib */,
+				7FDA12241AC637B0001C7474 /* Supporting Files */,
+			);
+			path = Sighting;
+			sourceTree = "<group>";
+		};
+		7FDA12241AC637B0001C7474 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA12251AC637B0001C7474 /* Info.plist */,
+				7FDA12261AC637B0001C7474 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7FDA123D1AC637B0001C7474 /* SightingTests */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA12401AC637B0001C7474 /* SightingTests.m */,
+				7FDA123E1AC637B0001C7474 /* Supporting Files */,
+			);
+			path = SightingTests;
+			sourceTree = "<group>";
+		};
+		7FDA123E1AC637B0001C7474 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA123F1AC637B0001C7474 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7FDA12201AC637B0001C7474 /* Sighting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FDA12441AC637B0001C7474 /* Build configuration list for PBXNativeTarget "Sighting" */;
+			buildPhases = (
+				470E711F9A4A22A4C2BEB607 /* Check Pods Manifest.lock */,
+				7FDA121D1AC637B0001C7474 /* Sources */,
+				7FDA121E1AC637B0001C7474 /* Frameworks */,
+				7FDA121F1AC637B0001C7474 /* Resources */,
+				7E8401B631AF3D220AC3E212 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sighting;
+			productName = Sighting;
+			productReference = 7FDA12211AC637B0001C7474 /* Sighting.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7FDA12391AC637B0001C7474 /* SightingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FDA12471AC637B0001C7474 /* Build configuration list for PBXNativeTarget "SightingTests" */;
+			buildPhases = (
+				7FDA12361AC637B0001C7474 /* Sources */,
+				7FDA12371AC637B0001C7474 /* Frameworks */,
+				7FDA12381AC637B0001C7474 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FDA123C1AC637B0001C7474 /* PBXTargetDependency */,
+			);
+			name = SightingTests;
+			productName = SightingTests;
+			productReference = 7FDA123A1AC637B0001C7474 /* SightingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7FDA12191AC637B0001C7474 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Stever2Startup;
+				TargetAttributes = {
+					7FDA12201AC637B0001C7474 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					7FDA12391AC637B0001C7474 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 7FDA12201AC637B0001C7474;
+					};
+				};
+			};
+			buildConfigurationList = 7FDA121C1AC637B0001C7474 /* Build configuration list for PBXProject "Sighting" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7FDA12181AC637B0001C7474;
+			productRefGroup = 7FDA12221AC637B0001C7474 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7FDA12201AC637B0001C7474 /* Sighting */,
+				7FDA12391AC637B0001C7474 /* SightingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7FDA121F1AC637B0001C7474 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FDA12301AC637B0001C7474 /* Main.storyboard in Resources */,
+				7FDA12351AC637B0001C7474 /* LaunchScreen.xib in Resources */,
+				7FDA12321AC637B0001C7474 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FDA12381AC637B0001C7474 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		470E711F9A4A22A4C2BEB607 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7E8401B631AF3D220AC3E212 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7FDA121D1AC637B0001C7474 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */,
+				7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */,
+				7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */,
+				7FDA12271AC637B0001C7474 /* main.m in Sources */,
+				7F908CC01AC63D1700197D00 /* LoginViewController.m in Sources */,
+				7F908CC81AC6439B00197D00 /* NavLoginViewController.m in Sources */,
+				7F908CC31AC63D2100197D00 /* DashBoardViewController.m in Sources */,
+				7F908CCB1AC6464800197D00 /* LocationManagerSingleton.m in Sources */,
+				7F908CCE1AC6546400197D00 /* MapViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FDA12361AC637B0001C7474 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FDA12411AC637B0001C7474 /* SightingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FDA123C1AC637B0001C7474 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FDA12201AC637B0001C7474 /* Sighting */;
+			targetProxy = 7FDA123B1AC637B0001C7474 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7FDA122E1AC637B0001C7474 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FDA122F1AC637B0001C7474 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7FDA12331AC637B0001C7474 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FDA12341AC637B0001C7474 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7FDA12421AC637B0001C7474 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7FDA12431AC637B0001C7474 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7FDA12451AC637B0001C7474 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C163CC96A43849E63AB4C4B8 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Sighting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7FDA12461AC637B0001C7474 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2E586C5E1F6EF7922A7005D /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Sighting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7FDA12481AC637B0001C7474 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SightingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sighting.app/Sighting";
+			};
+			name = Debug;
+		};
+		7FDA12491AC637B0001C7474 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SightingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sighting.app/Sighting";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7FDA121C1AC637B0001C7474 /* Build configuration list for PBXProject "Sighting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FDA12421AC637B0001C7474 /* Debug */,
+				7FDA12431AC637B0001C7474 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FDA12441AC637B0001C7474 /* Build configuration list for PBXNativeTarget "Sighting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FDA12451AC637B0001C7474 /* Debug */,
+				7FDA12461AC637B0001C7474 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FDA12471AC637B0001C7474 /* Build configuration list for PBXNativeTarget "SightingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FDA12481AC637B0001C7474 /* Debug */,
+				7FDA12491AC637B0001C7474 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7FDA12191AC637B0001C7474 /* Project object */;
+}
