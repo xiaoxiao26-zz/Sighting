@@ -17,6 +17,7 @@
 @property (nonatomic) double lat;
 @property (nonatomic) double lng;
 @property (nonatomic, strong) Group *group;
+@property (nonatomic) NSInteger time;
 @property (nonatomic) NSDate *date;
 
 - (instancetype)initWithUser:(NSString *)user

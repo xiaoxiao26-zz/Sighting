@@ -42,6 +42,8 @@
 
 - (IBAction)login:(id)sender {
 
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -55,7 +57,6 @@
                                      message:@"Stupid error"
                                           vc:self];
              } else {
-                 NSLog(@"%@", responseObject);
                  [Globals globals].user = self.usernameTextField.text;
                  [self.delegate didFinishLoggingInWithGroups:responseObject[@"groups"]];
                  [self dismissViewControllerAnimated:YES completion:nil];
@@ -71,6 +72,9 @@
 }
 - (IBAction)register:(id)sender {
     
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
@@ -78,7 +82,6 @@
       parameters:@{@"user": self.usernameTextField.text,
                    @"pass":self.passwordTextField.text}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSLog(@"%@", responseObject);
              NSNumber *success = (NSNumber *)responseObject[@"success"];
              if (!success.boolValue) {
                  [Globals showAlertWithTitle:@"Register Error"

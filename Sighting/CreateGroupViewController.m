@@ -7,6 +7,7 @@
 //
 
 #import "CreateGroupViewController.h"
+#import "Globals.h"
 
 @interface CreateGroupViewController() <UITextFieldDelegate, UITextViewDelegate>
 {
@@ -44,18 +45,10 @@
     [[self.descriptionTextView layer] setBorderWidth:0.6];
     [[self.descriptionTextView layer] setCornerRadius:3.5];
     
-    [self setButtonColorWithValue:2.5];
+    [self.createButton setBackgroundColor:[Globals getColorForValue:3.0]];
     gradient =[CAGradientLayer layer];
     [self addLayers];
 
-}
-
-
-- (void)setButtonColorWithValue:(float)value
-{
-    float scale = value / 5.0;
-    UIColor *color = [UIColor colorWithRed:1 - scale green:scale blue:0.0 alpha:1.0];
-    [self.createButton setBackgroundColor:color];
 }
 
 
@@ -74,7 +67,7 @@
 - (IBAction)slideValueChanged:(id)sender {
     long sliderValue = lroundf(self.slider.value);
     [self.slider setValue:sliderValue animated:YES];
-    [self setButtonColorWithValue:self.slider.value];
+    [self.createButton setBackgroundColor:[Globals getColorForValue:self.slider.value]];
 }
 
 -(void)addLayers

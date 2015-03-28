@@ -11,6 +11,7 @@
 		7F1018541AC6F5280005085F /* AddAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1018531AC6F5280005085F /* AddAlertViewController.m */; };
 		7F1018581AC6F7C00005085F /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1018571AC6F7C00005085F /* Group.m */; };
 		7F10185B1AC6F7C90005085F /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F10185A1AC6F7C90005085F /* Alert.m */; };
+		7F10185E1AC711B40005085F /* AlertTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F10185D1AC711B40005085F /* AlertTableViewCell.m */; };
 		7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */; };
 		7F4A41FB1AC6670300FBC7A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */; };
 		7F4A42011AC67F3500FBC7A5 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A42001AC67F3500FBC7A5 /* Globals.m */; };
@@ -46,6 +47,8 @@
 		7F1018571AC6F7C00005085F /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		7F1018591AC6F7C90005085F /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		7F10185A1AC6F7C90005085F /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		7F10185C1AC711B40005085F /* AlertTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertTableViewCell.h; sourceTree = "<group>"; };
+		7F10185D1AC711B40005085F /* AlertTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertTableViewCell.m; sourceTree = "<group>"; };
 		7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
 		7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 		7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -184,6 +187,8 @@
 				7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */,
 				7F908CC11AC63D2100197D00 /* DashBoardViewController.h */,
 				7F908CC21AC63D2100197D00 /* DashBoardViewController.m */,
+				7F10185C1AC711B40005085F /* AlertTableViewCell.h */,
+				7F10185D1AC711B40005085F /* AlertTableViewCell.m */,
 				7FDA12311AC637B0001C7474 /* Images.xcassets */,
 				7FDA12331AC637B0001C7474 /* LaunchScreen.xib */,
 				7FDA12241AC637B0001C7474 /* Supporting Files */,
@@ -358,6 +363,7 @@
 				7F1018581AC6F7C00005085F /* Group.m in Sources */,
 				7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */,
 				7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */,
+				7F10185E1AC711B40005085F /* AlertTableViewCell.m in Sources */,
 				7FDA12271AC637B0001C7474 /* main.m in Sources */,
 				7F908CC01AC63D1700197D00 /* LoginViewController.m in Sources */,
 				7F908CC81AC6439B00197D00 /* NavLoginViewController.m in Sources */,

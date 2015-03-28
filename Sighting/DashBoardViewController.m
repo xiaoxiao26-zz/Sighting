@@ -11,19 +11,30 @@
 #import "MapViewController.h"
 #import "AddAlertViewController.h"
 #import "Group.h"
+#import "Globals.h"
+#import "AlertTableViewCell.h"
+#import "Alert.h"
 
 #define METERS_PER_MILE 1609.344
+#define DEFAULT_RADIUS 0.3
 
 
-@interface DashBoardViewController() <CLLocationManagerDelegate, MapDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DashBoardViewController() <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) MapViewController *mapVc;
 @property (nonatomic) BOOL loggedIn;
 @property (strong, nonatomic) CLLocationManager *manager;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *groups;
 @property (strong, nonatomic) NSMutableArray *recentAlerts;
+@property (weak, nonatomic) IBOutlet UIView *mapContainerView;
+
+@property (strong, nonatomic) UIBarButtonItem *listBarButton;
+@property (strong, nonatomic) UIBarButtonItem *minimizeMapBarButton;
+
+
+@property (nonatomic) BOOL mapFullScreen;
 
 @end
 
@@ -33,38 +44,191 @@
 - (void)viewDidLoad
 {
     self.mapView.hidden = YES;
+    self.tableView.hidden = YES;
     self.groups = [@[] mutableCopy];
-//    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-//    gr.numberOfTapsRequired = 2;
-//    [self.view addGestureRecognizer:gr];
+    self.recentAlerts = [@[] mutableCopy];
+    
+    self.listBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu-44"]
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(listGroups)];
+    self.minimizeMapBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Minimize Map"
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(minimizeMap)];
+    
+    [self.navigationItem setRightBarButtonItem:self.listBarButton];
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.mapContainerView addGestureRecognizer:gr];
+}
+
+- (void)listGroups
+{
+    [self performSegueWithIdentifier:@"groups" sender:nil];
+}
+
+- (void)minimizeMap
+{
+    NSLog(@"minimizaing map!");
+    [self.view layoutIfNeeded];
+    self.mapHeightConstraint.constant = 196;
+
+    [UIView animateWithDuration:0.4
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:^(BOOL finished) {
+                         if (self.recentAlerts.count) {
+                             Alert *alert = self.recentAlerts[[self.tableView indexPathForSelectedRow].row];
+                             
+                             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+                             
+                             
+                             [UIView animateWithDuration:1.0
+                                                   delay:0.0
+                                                 options:UIViewAnimationOptionCurveEaseInOut
+                                              animations:^{
+                                                  [self.mapView setRegion:viewRegion animated:YES];
+                                                  
+                                              } completion:^(BOOL finished) {
+                                                  self.mapView.userInteractionEnabled = NO;
+                                                  self.mapFullScreen = NO;
+                                                  [self.navigationItem setRightBarButtonItem:self.listBarButton];
+                                              }];
+
+                         } else {
+                             self.mapView.userInteractionEnabled = NO;
+                             self.mapFullScreen = NO;
+                             [self.navigationItem setRightBarButtonItem:self.listBarButton];
+                         }
+
+                     }];
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.recentAlerts.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Recent Alerts";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    AlertTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"alert" forIndexPath:indexPath];
+    Alert *alert = [self.recentAlerts objectAtIndex:indexPath.row];
+    cell.titleLabel.text = alert.title;
+    cell.titleLabel.adjustsFontSizeToFitWidth = NO;
+    cell.groupLabel.text = alert.group.name;
+    cell.groupLabel.textColor = [alert.group getColor];
+    cell.selectionStyle=UITableViewCellSelectionStyleGray;
+    
+    return cell;
 }
 
 
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer {
-    CGPoint p = [gestureRecognizer locationInView:self.view];
-    if (CGRectContainsPoint(self.mapView.frame, p)) {
-        [self performSegueWithIdentifier:@"bigMap" sender:nil];
-        NSLog(@"got a tap in the region i care about");
-    } else {
-        NSLog(@"got a tap, but not where i need it");
+    if (!self.mapFullScreen && self.loggedIn) {
+        self.mapFullScreen = YES;
+        [self.view layoutIfNeeded];
+        self.mapHeightConstraint.constant = self.view.frame.size.height;
+
+        [UIView animateWithDuration:0.4
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [self.view layoutIfNeeded];
+
+                         } completion:^(BOOL finished) {
+                             if (finished) {
+                                 if (self.recentAlerts.count) {
+                                     Alert *alert = self.recentAlerts[[self.tableView indexPathForSelectedRow].row];
+                                     
+                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+                                     
+                                     [UIView animateWithDuration:1.0
+                                                           delay:0.0
+                                                         options:UIViewAnimationOptionCurveEaseInOut
+                                                      animations:^{
+                                                          [self.mapView setRegion:viewRegion animated:YES];
+                                                          
+                                                      } completion:^(BOOL finished) {
+                                                          [self updateMapViewAnnotations];
+                                                          self.mapView.userInteractionEnabled = YES;
+                                                          [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+                                                      }];
+                                 } else {
+                                     self.mapView.userInteractionEnabled = YES;
+                                     [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+                                 }
+
+                             } else {
+                                 NSLog(@"NOT FINISHED!");
+                                 self.mapView.userInteractionEnabled = NO;
+                                 [self.navigationItem setRightBarButtonItem:self.listBarButton];
+                                 self.mapFullScreen = NO;
+
+                             }
+                             
+                             
+                         }];
     }
+
 }
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view;
+{
+    NSLog(@"selected annotation");
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return  nil;
+    }
+    
+    static NSString *identifier = @"annotation";
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if (!annotationView) {
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+    }
+    Alert *alert = (Alert *)annotation;
+    annotationView.annotation = annotation;
+    annotationView.pinColor = alert.group.rating <= 2 ? MKPinAnnotationColorRed : MKPinAnnotationColorGreen;
+    annotationView.canShowCallout = YES;
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    return annotationView;
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"row selected");
+    NSLog(@"%d", self.mapFullScreen);
+    Alert *alert = self.recentAlerts[indexPath.row];
+    if (!self.mapFullScreen) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+        [self.mapView setRegion:viewRegion animated:YES];
+    }
+    
+}
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.mapVc = nil;
+    if (!self.mapFullScreen) {
+        [self.tableView reloadData];
+
+        [self updateMapViewAnnotations];
+
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -81,19 +245,32 @@
 
 - (void)didFinishLoggingInWithGroups:(NSArray *)groups
 {
+    self.tableView.hidden = NO;
     for (NSDictionary* groupInfo in groups) {
         Group *group = [[Group alloc] initWithName:groupInfo[@"name"]
                                               desc:groupInfo[@"description"]
                                         alertsInfo:groupInfo[@"alerts"]];
         [self.groups addObject:group];
     }
-    self.loggedIn = true;
+    self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
     [self setUpMap];
+    [self.tableView reloadData];
+    
+    if (self.recentAlerts.count) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                    animated:NO
+                              scrollPosition:UITableViewScrollPositionNone];
+        [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    }
+    
+    self.loggedIn = true;
+
 }
 
 - (void)didRegister
 {
     self.loggedIn = true;
+    self.tableView.hidden = NO;
     [self setUpMap];
 }
 
@@ -108,6 +285,7 @@
     self.mapView.hidden = NO;
     self.mapView.showsUserLocation = YES;
     self.mapView.userInteractionEnabled = NO;
+    [self updateMapViewAnnotations];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -116,7 +294,7 @@
 
     CLLocationCoordinate2D coord = value.MKCoordinateValue;
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coord, METERS_PER_MILE * 0.3, METERS_PER_MILE * 0.3);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coord, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
     [self.mapView setRegion:viewRegion];
     [[LocationManagerSingleton sharedSingleton] removeObserver:self forKeyPath:@"currentLocation"];
     
@@ -125,24 +303,13 @@
 - (void)updateMapViewAnnotations
 {
     [self.mapView removeAnnotations:self.mapView.annotations];
-//    [self.mapView addAnnotations:self.photos];
-//    [self.mapView showAnnotations:self.photos animated:YES];
+    [self.mapView addAnnotations:self.recentAlerts];
 }
 
-- (void)updateAnnotations
-{
-    [self.mapVc.mapView removeAnnotations:self.mapVc.mapView.annotations];
-    [self updateMapViewAnnotations];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"map"]) {
-        MapViewController *vc = segue.destinationViewController;
-        vc.mapView.delegate = self;
-        self.mapVc = vc;
-        self.mapVc.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"addAlert"]) {
+    if ([segue.identifier isEqualToString:@"addAlert"]) {
         UINavigationController *nvc = segue.destinationViewController;
         AddAlertViewController *vc = nvc.viewControllers[0];
         vc.groups = self.groups;

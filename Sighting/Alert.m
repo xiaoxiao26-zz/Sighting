@@ -18,6 +18,7 @@
         _lat = lat;
         _lng = lng;
         _group = group;
+        _time = seconds;
     }
     return self;
 }

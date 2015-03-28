@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
+
 @end
 
 @implementation AddAlertViewController
@@ -31,6 +32,7 @@
 }
 
 - (IBAction)cancel:(id)sender {
+    [self.titleTextField resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -77,9 +79,6 @@
     NSString *lng = [NSString stringWithFormat:@"%f", [LocationManagerSingleton sharedSingleton].currentLocation.longitude];
 
     NSString *user = [Globals globals].user;
-    NSString *name = group.name;
-    NSString *title = self.titleTextField.text;
-    
     
     NSDictionary *params = @{@"user":user,
                              @"group":group.name,
@@ -98,6 +97,10 @@
                                      message:@"There was a biggg problem"
                                           vc:self];
              } else {
+                 NSLog(@"%@", responseObject);
+//                 [[NSNotificationCenter defaultCenter] postNotificationName:@"newAlert"
+//                                                                     object:nil
+//                                                                   userInfo:@{@"alert": alert];
                  [Globals showCompletionAlert:@"Success!"
                                       message:@"You have added an alert"
                                            vc:self];

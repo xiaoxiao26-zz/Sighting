@@ -7,6 +7,8 @@
 //
 
 #import "Globals.h"
+#import "Group.h"
+#import "Alert.h"
 
 @implementation Globals
 
@@ -38,6 +40,29 @@
     
     [alert addAction:okAction];
     [vc presentViewController:alert animated:YES completion:nil];
+}
+
++ (NSMutableArray *)getRecentAlertsFromGroups:(NSArray *)groups
+{
+    NSMutableArray *recentAlerts = [@[] mutableCopy];
+    for (Group *group in groups) {
+        for (Alert *alert in group.alerts) {
+            [recentAlerts addObject:alert];
+        }
+    }
+    
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"time"
+                                                 ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    return [[recentAlerts sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+}
+
++ (UIColor *)getColorForValue:(double)value
+{
+    float scale = value / 5.0;
+    UIColor *color = [UIColor colorWithRed:1 - scale green:scale blue:0.0 alpha:1.0];
+    return color;
 }
 
 + (Globals*)globals {

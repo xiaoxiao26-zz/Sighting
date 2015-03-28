@@ -8,6 +8,7 @@
 
 #import "Group.h"
 #import "Alert.h"
+#import "Globals.h"
 
 @implementation Group
 
@@ -24,13 +25,18 @@
                                                    lng:((NSNumber *)alertInfo[@"lng"]).doubleValue
                                                seconds:((NSNumber *)alertInfo[@"time"]).integerValue
                                                   group:self];
-            NSLog(@"%@", alert.description);
             [_alerts addObject:alert];
-                    
+            _rating = 5.0;
                     
         }
     }
     return self;
+}
+
+
+- (UIColor *)getColor
+{
+    return [Globals getColorForValue:self.rating];
 }
 
 @end
