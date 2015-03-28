@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		231C5FB9C6375C427C173A29 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBF6336216BFD51FB295BDF /* libPods.a */; };
+		7F1018541AC6F5280005085F /* AddAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1018531AC6F5280005085F /* AddAlertViewController.m */; };
+		7F1018581AC6F7C00005085F /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1018571AC6F7C00005085F /* Group.m */; };
+		7F10185B1AC6F7C90005085F /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F10185A1AC6F7C90005085F /* Alert.m */; };
 		7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */; };
 		7F4A41FB1AC6670300FBC7A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */; };
 		7F4A42011AC67F3500FBC7A5 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A42001AC67F3500FBC7A5 /* Globals.m */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F1018521AC6F5280005085F /* AddAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlertViewController.h; sourceTree = "<group>"; };
+		7F1018531AC6F5280005085F /* AddAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlertViewController.m; sourceTree = "<group>"; };
+		7F1018561AC6F7C00005085F /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		7F1018571AC6F7C00005085F /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		7F1018591AC6F7C90005085F /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		7F10185A1AC6F7C90005085F /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
 		7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 		7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -111,6 +120,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7F1018551AC6F7B50005085F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F1018561AC6F7C00005085F /* Group.h */,
+				7F1018571AC6F7C00005085F /* Group.m */,
+				7F1018591AC6F7C90005085F /* Alert.h */,
+				7F10185A1AC6F7C90005085F /* Alert.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7F908CCF1AC654E600197D00 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +165,12 @@
 		7FDA12231AC637B0001C7474 /* Sighting */ = {
 			isa = PBXGroup;
 			children = (
+				7F1018551AC6F7B50005085F /* Model */,
 				7F908CCF1AC654E600197D00 /* Login */,
 				7FDA12281AC637B0001C7474 /* AppDelegate.h */,
 				7FDA12291AC637B0001C7474 /* AppDelegate.m */,
+				7F1018521AC6F5280005085F /* AddAlertViewController.h */,
+				7F1018531AC6F5280005085F /* AddAlertViewController.m */,
 				7FDA122E1AC637B0001C7474 /* Main.storyboard */,
 				7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */,
 				7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */,
@@ -331,6 +354,8 @@
 			files = (
 				7F4A42011AC67F3500FBC7A5 /* Globals.m in Sources */,
 				7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */,
+				7F1018541AC6F5280005085F /* AddAlertViewController.m in Sources */,
+				7F1018581AC6F7C00005085F /* Group.m in Sources */,
 				7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */,
 				7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */,
 				7FDA12271AC637B0001C7474 /* main.m in Sources */,
@@ -339,6 +364,7 @@
 				7F908CC31AC63D2100197D00 /* DashBoardViewController.m in Sources */,
 				7F908CCB1AC6464800197D00 /* LocationManagerSingleton.m in Sources */,
 				7F908CCE1AC6546400197D00 /* MapViewController.m in Sources */,
+				7F10185B1AC6F7C90005085F /* Alert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

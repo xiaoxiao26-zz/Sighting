@@ -49,14 +49,17 @@
       parameters:@{@"user": self.usernameTextField.text,
                    @"pass":self.passwordTextField.text}
          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-             if ([responseObject[@"success"] isEqualToString:@"false"]) {
+             NSNumber *success = (NSNumber *)responseObject[@"success"];
+             if (!success.boolValue) {
                  [Globals showAlertWithTitle:@"Login Error"
                                      message:@"Stupid error"
                                           vc:self];
+             } else {
+                 NSLog(@"%@", responseObject);
+                 [Globals globals].user = self.usernameTextField.text;
+                 [self.delegate didFinishLoggingInWithGroups:responseObject[@"groups"]];
+                 [self dismissViewControllerAnimated:YES completion:nil];
              }
-             NSLog(@"%@", responseObject);
-             [self.delegate didFinishLoggingIn];
-             [self dismissViewControllerAnimated:YES completion:nil];
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              [Globals showAlertWithTitle:@"Login Error"
@@ -76,12 +79,13 @@
                    @"pass":self.passwordTextField.text}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              NSLog(@"%@", responseObject);
-             if ([responseObject[@"success"] isEqualToString:@"false"]) {
+             NSNumber *success = (NSNumber *)responseObject[@"success"];
+             if (!success.boolValue) {
                  [Globals showAlertWithTitle:@"Register Error"
                                      message:@"Username taken!"
                                           vc:self];
              }
-             [self.delegate didFinishLoggingIn];
+             [self.delegate didRegister];
              [self dismissViewControllerAnimated:YES completion:nil];
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

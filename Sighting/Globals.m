@@ -27,4 +27,27 @@
     [vc presentViewController:alert animated:YES completion:nil];
 }
 
++ (void)showCompletionAlert:(NSString *)title message:(NSString *)message vc:(UIViewController *)vc
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:nil];
+        [vc dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [alert addAction:okAction];
+    [vc presentViewController:alert animated:YES completion:nil];
+}
+
++ (Globals*)globals {
+    static Globals* sharedSingleton;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedSingleton = [Globals new];
+        
+    });
+    return sharedSingleton;
+}
+
 @end

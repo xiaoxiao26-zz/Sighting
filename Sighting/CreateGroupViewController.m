@@ -37,7 +37,9 @@
     self.slider.backgroundColor = [UIColor clearColor];
     self.slider.minimumValue = 0.0;
     self.slider.maximumValue = 5.0;
-    self.slider.value = 2.5;
+    self.slider.value = 3.0;
+    [self.createButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.createButton.layer setCornerRadius:5.0];
     [[self.descriptionTextView layer] setBorderColor:[[UIColor colorWithWhite:0.85 alpha:1.0] CGColor]];
     [[self.descriptionTextView layer] setBorderWidth:0.6];
     [[self.descriptionTextView layer] setCornerRadius:3.5];
@@ -53,7 +55,7 @@
 {
     float scale = value / 5.0;
     UIColor *color = [UIColor colorWithRed:1 - scale green:scale blue:0.0 alpha:1.0];
-    [self.createButton setTitleColor:color forState:UIControlStateNormal];
+    [self.createButton setBackgroundColor:color];
 }
 
 
@@ -70,6 +72,8 @@
 }
 
 - (IBAction)slideValueChanged:(id)sender {
+    long sliderValue = lroundf(self.slider.value);
+    [self.slider setValue:sliderValue animated:YES];
     [self setButtonColorWithValue:self.slider.value];
 }
 

@@ -9,6 +9,8 @@
 #import "DashBoardViewController.h"
 #import "LocationManagerSingleton.h"
 #import "MapViewController.h"
+#import "AddAlertViewController.h"
+#import "Group.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -20,6 +22,8 @@
 @property (nonatomic) BOOL loggedIn;
 @property (strong, nonatomic) CLLocationManager *manager;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *groups;
+@property (strong, nonatomic) NSMutableArray *recentAlerts;
 
 @end
 
@@ -29,6 +33,7 @@
 - (void)viewDidLoad
 {
     self.mapView.hidden = YES;
+    self.groups = [@[] mutableCopy];
 //    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
 //    gr.numberOfTapsRequired = 2;
 //    [self.view addGestureRecognizer:gr];
@@ -74,11 +79,22 @@
     }
 }
 
-- (void)didFinishLoggingIn
+- (void)didFinishLoggingInWithGroups:(NSArray *)groups
+{
+    for (NSDictionary* groupInfo in groups) {
+        Group *group = [[Group alloc] initWithName:groupInfo[@"name"]
+                                              desc:groupInfo[@"description"]
+                                        alertsInfo:groupInfo[@"alerts"]];
+        [self.groups addObject:group];
+    }
+    self.loggedIn = true;
+    [self setUpMap];
+}
+
+- (void)didRegister
 {
     self.loggedIn = true;
     [self setUpMap];
-    
 }
 
 - (void)setUpMap
@@ -91,8 +107,7 @@
 
     self.mapView.hidden = NO;
     self.mapView.showsUserLocation = YES;
-    
-    
+    self.mapView.userInteractionEnabled = NO;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -127,6 +142,10 @@
         vc.mapView.delegate = self;
         self.mapVc = vc;
         self.mapVc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"addAlert"]) {
+        UINavigationController *nvc = segue.destinationViewController;
+        AddAlertViewController *vc = nvc.viewControllers[0];
+        vc.groups = self.groups;
     }
 }
 

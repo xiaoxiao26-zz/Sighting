@@ -13,8 +13,13 @@ static NSString* const kBaseUrls = @"http://sighting-env.elasticbeanstalk.com/";
 
 @interface Globals : NSObject
 
+@property (nonatomic, strong) NSString *user;
+
 + (NSString *)urlWithPath:(NSString *)path;
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message vc:(UIViewController *)vc;
++ (void)showCompletionAlert:(NSString *)title message:(NSString *)message vc:(UIViewController *)vc;
++ (Globals*)globals;
++ (NSMutableArray *)getRecentAlertsFromGroups:(NSArray *)groups;
 
 @end
 

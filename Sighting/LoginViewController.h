@@ -11,7 +11,8 @@
 
 @protocol LoginDelegate <NSObject>
 
-- (void)didFinishLoggingIn;
+- (void)didFinishLoggingInWithGroups:(NSArray *)groups;
+- (void)didRegister;
 
 @end
 
