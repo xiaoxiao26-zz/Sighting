@@ -18,7 +18,7 @@
 @implementation GroupsViewController
 
 - (IBAction)changeTableViewType:(id)sender {
-    
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

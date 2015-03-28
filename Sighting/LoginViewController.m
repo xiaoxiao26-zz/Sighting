@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "Globals.h"
+#import <AFNetworking/AFNetworking.h>
+
 
 @interface LoginViewController() <UITextFieldDelegate>
 
@@ -38,13 +41,56 @@
 }
 
 - (IBAction)login:(id)sender {
-    [self.delegate didFinishLoggingIn];
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager GET:[Globals urlWithPath:@"login"]
+      parameters:@{@"user": self.usernameTextField.text,
+                   @"pass":self.passwordTextField.text}
+         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+             if ([responseObject[@"success"] isEqualToString:@"false"]) {
+                 [Globals showAlertWithTitle:@"Login Error"
+                                     message:@"Stupid error"
+                                          vc:self];
+             }
+             NSLog(@"%@", responseObject);
+             [self.delegate didFinishLoggingIn];
+             [self dismissViewControllerAnimated:YES completion:nil];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [Globals showAlertWithTitle:@"Login Error"
+                                 message:error.localizedDescription
+                                      vc:self];
+             
+         }];
     
 }
 - (IBAction)register:(id)sender {
-    [self.delegate didFinishLoggingIn];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+
+    [manager GET:[Globals urlWithPath:@"register"]
+      parameters:@{@"user": self.usernameTextField.text,
+                   @"pass":self.passwordTextField.text}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"%@", responseObject);
+             if ([responseObject[@"success"] isEqualToString:@"false"]) {
+                 [Globals showAlertWithTitle:@"Register Error"
+                                     message:@"Username taken!"
+                                          vc:self];
+             }
+             [self.delegate didFinishLoggingIn];
+             [self dismissViewControllerAnimated:YES completion:nil];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [Globals showAlertWithTitle:@"Register Error"
+                                 message:error.localizedDescription
+                                      vc:self];
+             
+         }];
+    
 }
 
 @end

@@ -24,6 +24,7 @@
 
 @implementation CreateGroupViewController
 
+
 - (void)viewDidLoad
 {
     [self setupUI];
@@ -35,13 +36,13 @@
 {
     self.slider.backgroundColor = [UIColor clearColor];
     self.slider.minimumValue = 0.0;
-    self.slider.maximumValue = 7.0;
-    self.slider.value = 3.5;
+    self.slider.maximumValue = 5.0;
+    self.slider.value = 2.5;
     [[self.descriptionTextView layer] setBorderColor:[[UIColor colorWithWhite:0.85 alpha:1.0] CGColor]];
     [[self.descriptionTextView layer] setBorderWidth:0.6];
     [[self.descriptionTextView layer] setCornerRadius:3.5];
     
-    [self setButtonColorWithValue:3.5];
+    [self setButtonColorWithValue:2.5];
     gradient =[CAGradientLayer layer];
     [self addLayers];
 
@@ -50,7 +51,7 @@
 
 - (void)setButtonColorWithValue:(float)value
 {
-    float scale = value / 7.0;
+    float scale = value / 5.0;
     UIColor *color = [UIColor colorWithRed:1 - scale green:scale blue:0.0 alpha:1.0];
     [self.createButton setTitleColor:color forState:UIControlStateNormal];
 }

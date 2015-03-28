@@ -10,6 +10,7 @@
 		231C5FB9C6375C427C173A29 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBF6336216BFD51FB295BDF /* libPods.a */; };
 		7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */; };
 		7F4A41FB1AC6670300FBC7A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */; };
+		7F4A42011AC67F3500FBC7A5 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A42001AC67F3500FBC7A5 /* Globals.m */; };
 		7F908CC01AC63D1700197D00 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CBF1AC63D1700197D00 /* LoginViewController.m */; };
 		7F908CC31AC63D2100197D00 /* DashBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CC21AC63D2100197D00 /* DashBoardViewController.m */; };
 		7F908CC51AC63EA700197D00 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F908CC41AC63EA700197D00 /* MapKit.framework */; };
@@ -39,6 +40,8 @@
 		7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
 		7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 		7F4A41FA1AC6670300FBC7A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7F4A41FF1AC67F3500FBC7A5 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		7F4A42001AC67F3500FBC7A5 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
 		7F908CBE1AC63D1700197D00 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7F908CBF1AC63D1700197D00 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7F908CC11AC63D2100197D00 /* DashBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoardViewController.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				7FDA122E1AC637B0001C7474 /* Main.storyboard */,
 				7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */,
 				7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */,
+				7F4A41FF1AC67F3500FBC7A5 /* Globals.h */,
+				7F4A42001AC67F3500FBC7A5 /* Globals.m */,
 				7F908CD01AC65E1C00197D00 /* GroupsViewController.h */,
 				7F908CD11AC65E1C00197D00 /* GroupsViewController.m */,
 				7F908CCC1AC6546400197D00 /* MapViewController.h */,
@@ -324,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4A42011AC67F3500FBC7A5 /* Globals.m in Sources */,
 				7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */,
 				7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */,
 				7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */,
