@@ -10,4 +10,6 @@
 
 @interface GroupsViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray *groups;
+
 @end

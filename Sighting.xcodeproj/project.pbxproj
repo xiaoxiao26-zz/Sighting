@@ -20,8 +20,8 @@
 		7F908CC51AC63EA700197D00 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F908CC41AC63EA700197D00 /* MapKit.framework */; };
 		7F908CC81AC6439B00197D00 /* NavLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CC71AC6439B00197D00 /* NavLoginViewController.m */; };
 		7F908CCB1AC6464800197D00 /* LocationManagerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */; };
-		7F908CCE1AC6546400197D00 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CCD1AC6546400197D00 /* MapViewController.m */; };
 		7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CD11AC65E1C00197D00 /* GroupsViewController.m */; };
+		7FBFD4881AC75E64008B0D8C /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFD4871AC75E64008B0D8C /* GroupTableViewCell.m */; };
 		7FDA12271AC637B0001C7474 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12261AC637B0001C7474 /* main.m */; };
 		7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12291AC637B0001C7474 /* AppDelegate.m */; };
 		7FDA12301AC637B0001C7474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDA122E1AC637B0001C7474 /* Main.storyboard */; };
@@ -63,10 +63,10 @@
 		7F908CC71AC6439B00197D00 /* NavLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavLoginViewController.m; sourceTree = "<group>"; };
 		7F908CC91AC6464800197D00 /* LocationManagerSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManagerSingleton.h; sourceTree = "<group>"; };
 		7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManagerSingleton.m; sourceTree = "<group>"; };
-		7F908CCC1AC6546400197D00 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		7F908CCD1AC6546400197D00 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		7F908CD01AC65E1C00197D00 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
 		7F908CD11AC65E1C00197D00 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		7FBFD4861AC75E64008B0D8C /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
+		7FBFD4871AC75E64008B0D8C /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		7FDA12211AC637B0001C7474 /* Sighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDA12251AC637B0001C7474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FDA12261AC637B0001C7474 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -145,6 +145,17 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		7FBFD4851AC75E4A008B0D8C /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7F10185C1AC711B40005085F /* AlertTableViewCell.h */,
+				7F10185D1AC711B40005085F /* AlertTableViewCell.m */,
+				7FBFD4861AC75E64008B0D8C /* GroupTableViewCell.h */,
+				7FBFD4871AC75E64008B0D8C /* GroupTableViewCell.m */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
 		7FDA12181AC637B0001C7474 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +179,7 @@
 		7FDA12231AC637B0001C7474 /* Sighting */ = {
 			isa = PBXGroup;
 			children = (
+				7FBFD4851AC75E4A008B0D8C /* TableViewCells */,
 				7F1018551AC6F7B50005085F /* Model */,
 				7F908CCF1AC654E600197D00 /* Login */,
 				7FDA12281AC637B0001C7474 /* AppDelegate.h */,
@@ -181,14 +193,10 @@
 				7F4A42001AC67F3500FBC7A5 /* Globals.m */,
 				7F908CD01AC65E1C00197D00 /* GroupsViewController.h */,
 				7F908CD11AC65E1C00197D00 /* GroupsViewController.m */,
-				7F908CCC1AC6546400197D00 /* MapViewController.h */,
-				7F908CCD1AC6546400197D00 /* MapViewController.m */,
 				7F908CC91AC6464800197D00 /* LocationManagerSingleton.h */,
 				7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */,
 				7F908CC11AC63D2100197D00 /* DashBoardViewController.h */,
 				7F908CC21AC63D2100197D00 /* DashBoardViewController.m */,
-				7F10185C1AC711B40005085F /* AlertTableViewCell.h */,
-				7F10185D1AC711B40005085F /* AlertTableViewCell.m */,
 				7FDA12311AC637B0001C7474 /* Images.xcassets */,
 				7FDA12331AC637B0001C7474 /* LaunchScreen.xib */,
 				7FDA12241AC637B0001C7474 /* Supporting Files */,
@@ -357,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FBFD4881AC75E64008B0D8C /* GroupTableViewCell.m in Sources */,
 				7F4A42011AC67F3500FBC7A5 /* Globals.m in Sources */,
 				7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */,
 				7F1018541AC6F5280005085F /* AddAlertViewController.m in Sources */,
@@ -369,7 +378,6 @@
 				7F908CC81AC6439B00197D00 /* NavLoginViewController.m in Sources */,
 				7F908CC31AC63D2100197D00 /* DashBoardViewController.m in Sources */,
 				7F908CCB1AC6464800197D00 /* LocationManagerSingleton.m in Sources */,
-				7F908CCE1AC6546400197D00 /* MapViewController.m in Sources */,
 				7F10185B1AC6F7C90005085F /* Alert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

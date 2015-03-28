@@ -39,4 +39,9 @@
     return [Globals getColorForValue:self.rating];
 }
 
+- (void)addAlert:(id)alert
+{
+    [self.alerts addObject:alert];
+}
+
 @end

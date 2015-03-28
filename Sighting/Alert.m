@@ -19,6 +19,7 @@
         _lng = lng;
         _group = group;
         _time = seconds;
+        _date = [NSDate dateWithTimeIntervalSince1970:seconds];
     }
     return self;
 }
@@ -36,6 +37,16 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"User: %@, Title: %@, lat: %f, lng: %f",self.user, self.title, self.lat, self.lng];
+}
+
+- (NSString *)dateAsString
+{
+//    NSDate *now = [NSDate date];
+//    
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    formatter.timeStyle = NSDate;
+    
+    
 }
 
 

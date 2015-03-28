@@ -25,7 +25,6 @@
 
 @implementation CreateGroupViewController
 
-
 - (void)viewDidLoad
 {
     [self setupUI];

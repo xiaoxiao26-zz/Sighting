@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+
+@class Alert;
+
 @interface Group : NSObject
 
 @property (strong, nonatomic) NSString *name;
@@ -18,5 +21,6 @@
 
 - (instancetype)initWithName:(NSString *)name desc:(NSString *)desc alertsInfo:(NSMutableArray *)alerts;
 - (UIColor *)getColor;
+- (void)addAlert:(Alert *)alert;
 
 @end

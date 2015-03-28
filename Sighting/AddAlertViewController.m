@@ -63,7 +63,6 @@
         return @"Join a group first!";
     } else {
         Group *group = self.groups[row];
-        NSLog(@"%@", group.name);
         return group.name;
     }
 }
@@ -85,28 +84,23 @@
                              @"title":self.titleTextField.text,
                              @"lat":lat,
                              @"lng":lng};
+    [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
     [manager GET:[Globals urlWithPath:@"add_alert"]
       parameters:params
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+             
+             Alert *alert = [[Alert alloc] initWithUser:responseObject[@"user"]
+                                                  title:responseObject[@"title"]
+                                                    lat:((NSNumber *)responseObject[@"lat"]).doubleValue
+                                                    lng:((NSNumber *)responseObject[@"lng"]).doubleValue
+                                                seconds:((NSNumber *)responseObject[@"time"]).integerValue
+                                                  group:group];
 
-
-             NSLog(@"%@", responseObject);
-            NSNumber *success = (NSNumber *)responseObject[@"success"];
-             if (success.integerValue == 0) {
-                 [Globals showAlertWithTitle:@"Add Alert Error"
-                                     message:@"There was a biggg problem"
-                                          vc:self];
-             } else {
-                 NSLog(@"%@", responseObject);
-//                 [[NSNotificationCenter defaultCenter] postNotificationName:@"newAlert"
-//                                                                     object:nil
-//                                                                   userInfo:@{@"alert": alert];
-                 [Globals showCompletionAlert:@"Success!"
-                                      message:@"You have added an alert"
-                                           vc:self];
-                 
+             [group addAlert:alert];
+             [Globals showCompletionAlert:@"Success!"
+                                  message:@"You have added an alert"
+                                       vc:self];
             
-             }
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              [Globals showAlertWithTitle:@"Add Alert Error"
                                  message:error.localizedDescription

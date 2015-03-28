@@ -28,4 +28,6 @@
                        group:(Group *)group;
 
 
+- (NSString *)dateAsString;
+
 @end

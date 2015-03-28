@@ -8,7 +8,6 @@
 
 #import "DashBoardViewController.h"
 #import "LocationManagerSingleton.h"
-#import "MapViewController.h"
 #import "AddAlertViewController.h"
 #import "Group.h"
 #import "Globals.h"
@@ -40,6 +39,7 @@
 
 
 @implementation DashBoardViewController
+
 
 - (void)viewDidLoad
 {
@@ -219,16 +219,13 @@
     
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (!self.mapFullScreen) {
-        [self.tableView reloadData];
+    [super viewWillAppear:animated];
+    self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
 
-        [self updateMapViewAnnotations];
-
-    }
+    [self.tableView reloadData];
+    [self updateMapViewAnnotations];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -245,16 +242,12 @@
 
 - (void)didFinishLoggingInWithGroups:(NSArray *)groups
 {
-    self.tableView.hidden = NO;
-    for (NSDictionary* groupInfo in groups) {
-        Group *group = [[Group alloc] initWithName:groupInfo[@"name"]
-                                              desc:groupInfo[@"description"]
-                                        alertsInfo:groupInfo[@"alerts"]];
-        [self.groups addObject:group];
-    }
-    self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
+    
     [self setUpMap];
-    [self.tableView reloadData];
+    [self processGroups:groups];
+    
+    self.tableView.hidden = NO;
+
     
     if (self.recentAlerts.count) {
         [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
@@ -265,6 +258,21 @@
     
     self.loggedIn = true;
 
+}
+
+- (void)processGroups:(NSArray *)groups
+{
+    self.groups = [@[] mutableCopy];
+    for (NSDictionary* groupInfo in groups) {
+        Group *group = [[Group alloc] initWithName:groupInfo[@"name"]
+                                              desc:groupInfo[@"description"]
+                                        alertsInfo:groupInfo[@"alerts"]];
+        [self.groups addObject:group];
+    }
+    self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
+    
+    [self.tableView reloadData];
+    [self updateMapViewAnnotations];
 }
 
 - (void)didRegister

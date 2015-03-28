@@ -57,6 +57,7 @@
                                      message:@"Stupid error"
                                           vc:self];
              } else {
+                 NSLog(@"%@", responseObject);
                  [Globals globals].user = self.usernameTextField.text;
                  [self.delegate didFinishLoggingInWithGroups:responseObject[@"groups"]];
                  [self dismissViewControllerAnimated:YES completion:nil];
