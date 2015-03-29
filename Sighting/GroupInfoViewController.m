@@ -14,6 +14,7 @@
 #import "Globals.h"
 #import "GroupSettingsViewController.h"
 #import "AddAlertViewController.h"
+#import "LocationManagerSingleton.h"
 
 @interface GroupInfoViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -49,6 +50,18 @@
         Alert *alert = self.recentAlerts[0];
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
         [self.mapView setRegion:viewRegion animated:YES];
+    } else {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([LocationManagerSingleton sharedSingleton].currentLocation, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+        
+        [UIView animateWithDuration:1.0
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [self.mapView setRegion:viewRegion animated:YES];
+                             
+                         } completion:^(BOOL finished) {
+                         }];
+
     }
    
 }

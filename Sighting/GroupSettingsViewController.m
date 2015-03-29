@@ -51,7 +51,28 @@
 }
 - (IBAction)join:(id)sender {
     if ([[Globals globals] inGroup:self.group]) {
-        // save new rating
+        NSLog(@"trying to save");
+        self.group.rating = self.slider.value;
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *params = @{@"user":[Globals globals].user,
+                                 @"group":self.group.name,
+                                 @"status": [NSString stringWithFormat:@"%d", (int) self.slider.value]};
+        [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
+        [manager GET:[Globals urlWithPath:@"join"]
+          parameters:params
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [self.delegate didJoin];
+                     [Globals showCompletionAlert:@"Successfully Updated!"
+                                          message:[NSString stringWithFormat:@"Joined group %@", self.group.name]
+                                               vc:self];
+                 });
+                 
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 [Globals showAlertWithTitle:@"Create Group Error"
+                                     message:error.localizedDescription
+                                          vc:self];
+             }];
     } else {
         NSLog(@"trying to join");
         self.group.rating = self.slider.value;
@@ -63,7 +84,6 @@
         [manager GET:[Globals urlWithPath:@"join"]
           parameters:params
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 NSLog(@"%@", responseObject);
                  dispatch_async(dispatch_get_main_queue(), ^{
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"addedGroup"
                                                                          object:self

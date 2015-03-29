@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -32,6 +33,24 @@
 {
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.scrollView.contentOffset = CGPointMake(0, textField.frame.origin.y - 50);
+                     }];
+
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.scrollView.contentOffset = CGPointMake(0, 0);
+
+                     }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
