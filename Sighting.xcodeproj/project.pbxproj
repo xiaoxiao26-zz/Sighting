@@ -22,6 +22,8 @@
 		7F908CCB1AC6464800197D00 /* LocationManagerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CCA1AC6464800197D00 /* LocationManagerSingleton.m */; };
 		7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F908CD11AC65E1C00197D00 /* GroupsViewController.m */; };
 		7FBFD4881AC75E64008B0D8C /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFD4871AC75E64008B0D8C /* GroupTableViewCell.m */; };
+		7FBFD48B1AC77CA0008B0D8C /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFD48A1AC77CA0008B0D8C /* GroupInfoViewController.m */; };
+		7FBFD48E1AC78B66008B0D8C /* GroupSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFD48D1AC78B66008B0D8C /* GroupSettingsViewController.m */; };
 		7FDA12271AC637B0001C7474 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12261AC637B0001C7474 /* main.m */; };
 		7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA12291AC637B0001C7474 /* AppDelegate.m */; };
 		7FDA12301AC637B0001C7474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDA122E1AC637B0001C7474 /* Main.storyboard */; };
@@ -67,6 +69,10 @@
 		7F908CD11AC65E1C00197D00 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 		7FBFD4861AC75E64008B0D8C /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
 		7FBFD4871AC75E64008B0D8C /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
+		7FBFD4891AC77CA0008B0D8C /* GroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoViewController.h; sourceTree = "<group>"; };
+		7FBFD48A1AC77CA0008B0D8C /* GroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoViewController.m; sourceTree = "<group>"; };
+		7FBFD48C1AC78B66008B0D8C /* GroupSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSettingsViewController.h; sourceTree = "<group>"; };
+		7FBFD48D1AC78B66008B0D8C /* GroupSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupSettingsViewController.m; sourceTree = "<group>"; };
 		7FDA12211AC637B0001C7474 /* Sighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDA12251AC637B0001C7474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FDA12261AC637B0001C7474 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,6 +193,10 @@
 				7F1018521AC6F5280005085F /* AddAlertViewController.h */,
 				7F1018531AC6F5280005085F /* AddAlertViewController.m */,
 				7FDA122E1AC637B0001C7474 /* Main.storyboard */,
+				7FBFD48C1AC78B66008B0D8C /* GroupSettingsViewController.h */,
+				7FBFD48D1AC78B66008B0D8C /* GroupSettingsViewController.m */,
+				7FBFD4891AC77CA0008B0D8C /* GroupInfoViewController.h */,
+				7FBFD48A1AC77CA0008B0D8C /* GroupInfoViewController.m */,
 				7F4A41F71AC6632B00FBC7A5 /* CreateGroupViewController.h */,
 				7F4A41F81AC6632B00FBC7A5 /* CreateGroupViewController.m */,
 				7F4A41FF1AC67F3500FBC7A5 /* Globals.h */,
@@ -370,10 +380,12 @@
 				7F908CD21AC65E1C00197D00 /* GroupsViewController.m in Sources */,
 				7F1018541AC6F5280005085F /* AddAlertViewController.m in Sources */,
 				7F1018581AC6F7C00005085F /* Group.m in Sources */,
+				7FBFD48E1AC78B66008B0D8C /* GroupSettingsViewController.m in Sources */,
 				7F4A41F91AC6632B00FBC7A5 /* CreateGroupViewController.m in Sources */,
 				7FDA122A1AC637B0001C7474 /* AppDelegate.m in Sources */,
 				7F10185E1AC711B40005085F /* AlertTableViewCell.m in Sources */,
 				7FDA12271AC637B0001C7474 /* main.m in Sources */,
+				7FBFD48B1AC77CA0008B0D8C /* GroupInfoViewController.m in Sources */,
 				7F908CC01AC63D1700197D00 /* LoginViewController.m in Sources */,
 				7F908CC81AC6439B00197D00 /* NavLoginViewController.m in Sources */,
 				7F908CC31AC63D2100197D00 /* DashBoardViewController.m in Sources */,

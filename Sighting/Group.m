@@ -26,8 +26,7 @@
                                                seconds:((NSNumber *)alertInfo[@"time"]).integerValue
                                                   group:self];
             [_alerts addObject:alert];
-            _rating = 5.0;
-                    
+            _rating = 6;
         }
     }
     return self;
@@ -36,6 +35,9 @@
 
 - (UIColor *)getColor
 {
+    if (self.rating == 6) {
+        return [UIColor whiteColor];
+    }
     return [Globals getColorForValue:self.rating];
 }
 

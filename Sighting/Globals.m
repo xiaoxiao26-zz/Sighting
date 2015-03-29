@@ -14,7 +14,7 @@
 
 + (NSString *)urlWithPath:(NSString *)path
 {
-    return [NSString stringWithFormat:@"%@/%@", kBaseUrls, path];
+    return [NSString stringWithFormat:@"%@%@", kBaseUrls, path];
 }
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message vc:(UIViewController *)vc
@@ -73,6 +73,11 @@
         
     });
     return sharedSingleton;
+}
+
+- (BOOL)inGroup:(Group *)group
+{
+    return [self.groups containsObject:group];
 }
 
 @end

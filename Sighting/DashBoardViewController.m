@@ -13,9 +13,8 @@
 #import "Globals.h"
 #import "AlertTableViewCell.h"
 #import "Alert.h"
+#import "GroupsViewController.h"
 
-#define METERS_PER_MILE 1609.344
-#define DEFAULT_RADIUS 0.3
 
 
 @interface DashBoardViewController() <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -60,6 +59,7 @@
     [self.navigationItem setRightBarButtonItem:self.listBarButton];
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.mapContainerView addGestureRecognizer:gr];
+    [self.view bringSubviewToFront:self.mapView];
 }
 
 - (void)listGroups
@@ -125,7 +125,6 @@
     cell.titleLabel.adjustsFontSizeToFitWidth = NO;
     cell.groupLabel.text = alert.group.name;
     cell.groupLabel.textColor = [alert.group getColor];
-    cell.selectionStyle=UITableViewCellSelectionStyleGray;
     
     return cell;
 }
@@ -163,8 +162,20 @@
                                                           [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
                                                       }];
                                  } else {
-                                     self.mapView.userInteractionEnabled = YES;
-                                     [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+
+                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([LocationManagerSingleton sharedSingleton].currentLocation, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+                                     
+                                     [UIView animateWithDuration:1.0
+                                                           delay:0.0
+                                                         options:UIViewAnimationOptionCurveEaseInOut
+                                                      animations:^{
+                                                          [self.mapView setRegion:viewRegion animated:YES];
+                                                          
+                                                      } completion:^(BOOL finished) {
+                                                          [self updateMapViewAnnotations];
+                                                          self.mapView.userInteractionEnabled = YES;
+                                                          [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+                                                      }];
                                  }
 
                              } else {
@@ -267,6 +278,7 @@
         Group *group = [[Group alloc] initWithName:groupInfo[@"name"]
                                               desc:groupInfo[@"description"]
                                         alertsInfo:groupInfo[@"alerts"]];
+        group.rating = ((NSNumber *) groupInfo[@"status"]).integerValue;
         [self.groups addObject:group];
     }
     self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
@@ -320,6 +332,9 @@
     if ([segue.identifier isEqualToString:@"addAlert"]) {
         UINavigationController *nvc = segue.destinationViewController;
         AddAlertViewController *vc = nvc.viewControllers[0];
+        vc.groups = self.groups;
+    } else if ([segue.identifier isEqualToString:@"groups"]){
+        GroupsViewController *vc = segue.destinationViewController;
         vc.groups = self.groups;
     }
 }

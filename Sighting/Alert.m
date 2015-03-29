@@ -39,15 +39,15 @@
     return [NSString stringWithFormat:@"User: %@, Title: %@, lat: %f, lng: %f",self.user, self.title, self.lat, self.lng];
 }
 
-- (NSString *)dateAsString
-{
-//    NSDate *now = [NSDate date];
+//- (NSString *)dateAsString
+//{
+////    NSDate *now = [NSDate date];
+////    
+////    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+////    formatter.timeStyle = NSDate;
 //    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    formatter.timeStyle = NSDate;
-    
-    
-}
+//    
+//}
 
 
 @end
