@@ -14,10 +14,13 @@
 #import "AlertTableViewCell.h"
 #import "Alert.h"
 #import "GroupsViewController.h"
-
+#import "AppDelegate.h"
 
 
 @interface DashBoardViewController() <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    NSInteger latestAlertTime;
+}
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeightConstraint;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -39,6 +42,18 @@
 
 @implementation DashBoardViewController
 
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refresh:)
+                                                 name:@"groups"
+                                               object:nil];
+}
+
+- (void)refresh:(NSNotification *)note
+{
+    [self processGroups:note.userInfo[@"groups"]];
+}
 
 - (void)viewDidLoad
 {
@@ -59,6 +74,9 @@
     [self.navigationItem setRightBarButtonItem:self.listBarButton];
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.mapContainerView addGestureRecognizer:gr];
+    
+    UIPanGestureRecognizer *gr2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.mapContainerView addGestureRecognizer:gr2];
     [self.view bringSubviewToFront:self.mapView];
 }
 
@@ -73,35 +91,39 @@
     [self.view layoutIfNeeded];
     self.mapHeightConstraint.constant = 196;
 
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          [self.view layoutIfNeeded];
                      } completion:^(BOOL finished) {
-                         if (self.recentAlerts.count) {
-                             Alert *alert = self.recentAlerts[[self.tableView indexPathForSelectedRow].row];
-                             
-                             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
-                             
-                             
-                             [UIView animateWithDuration:1.0
-                                                   delay:0.0
-                                                 options:UIViewAnimationOptionCurveEaseInOut
-                                              animations:^{
-                                                  [self.mapView setRegion:viewRegion animated:YES];
-                                                  
-                                              } completion:^(BOOL finished) {
-                                                  self.mapView.userInteractionEnabled = NO;
-                                                  self.mapFullScreen = NO;
-                                                  [self.navigationItem setRightBarButtonItem:self.listBarButton];
-                                              }];
-
-                         } else {
-                             self.mapView.userInteractionEnabled = NO;
-                             self.mapFullScreen = NO;
-                             [self.navigationItem setRightBarButtonItem:self.listBarButton];
-                         }
+                         
+                           self.mapView.userInteractionEnabled = NO;
+                           self.mapFullScreen = NO;
+                           [self.navigationItem setRightBarButtonItem:self.listBarButton];
+//                         if (self.recentAlerts.count) {
+//                             Alert *alert = self.recentAlerts[[self.tableView indexPathForSelectedRow].row];
+//                             
+//                             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+//                             
+//                             
+//                             [UIView animateWithDuration:1.0
+//                                                   delay:0.0
+//                                                 options:UIViewAnimationOptionCurveEaseInOut
+//                                              animations:^{
+//                                                  [self.mapView setRegion:viewRegion animated:YES];
+//                                                  
+//                                              } completion:^(BOOL finished) {
+//                                                  self.mapView.userInteractionEnabled = NO;
+//                                                  self.mapFullScreen = NO;
+//                                                  [self.navigationItem setRightBarButtonItem:self.listBarButton];
+//                                              }];
+//
+//                         } else {
+//                             self.mapView.userInteractionEnabled = NO;
+//                             self.mapFullScreen = NO;
+//                             [self.navigationItem setRightBarButtonItem:self.listBarButton];
+//                         }
 
                      }];
 
@@ -137,54 +159,56 @@
         [self.view layoutIfNeeded];
         self.mapHeightConstraint.constant = self.view.frame.size.height;
 
-        [UIView animateWithDuration:0.4
+        [UIView animateWithDuration:0.2
                               delay:0.0
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              [self.view layoutIfNeeded];
 
                          } completion:^(BOOL finished) {
-                             if (finished) {
-                                 if (self.recentAlerts.count) {
-                                     Alert *alert = self.recentAlerts[[self.tableView indexPathForSelectedRow].row];
-                                     
-                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
-                                     
-                                     [UIView animateWithDuration:1.0
-                                                           delay:0.0
-                                                         options:UIViewAnimationOptionCurveEaseInOut
-                                                      animations:^{
-                                                          [self.mapView setRegion:viewRegion animated:YES];
-                                                          
-                                                      } completion:^(BOOL finished) {
-                                                          [self updateMapViewAnnotations];
-                                                          self.mapView.userInteractionEnabled = YES;
-                                                          [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
-                                                      }];
-                                 } else {
-
-                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([LocationManagerSingleton sharedSingleton].currentLocation, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
-                                     
-                                     [UIView animateWithDuration:1.0
-                                                           delay:0.0
-                                                         options:UIViewAnimationOptionCurveEaseInOut
-                                                      animations:^{
-                                                          [self.mapView setRegion:viewRegion animated:YES];
-                                                          
-                                                      } completion:^(BOOL finished) {
-                                                          [self updateMapViewAnnotations];
-                                                          self.mapView.userInteractionEnabled = YES;
-                                                          [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
-                                                      }];
-                                 }
-
-                             } else {
-                                 NSLog(@"NOT FINISHED!");
-                                 self.mapView.userInteractionEnabled = NO;
-                                 [self.navigationItem setRightBarButtonItem:self.listBarButton];
-                                 self.mapFullScreen = NO;
-
-                             }
+//                             if (finished) {
+//                                 if (self.recentAlerts.count) {
+//                                     Alert *alert = self.recentAlerts[[self.tableView indexPathForSelectedRow].row];
+//                                     
+//                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(alert.coordinate, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+//                                     
+//                                     [UIView animateWithDuration:1.0
+//                                                           delay:0.0
+//                                                         options:UIViewAnimationOptionCurveEaseInOut
+//                                                      animations:^{
+//                                                          [self.mapView setRegion:viewRegion animated:YES];
+//                                                          
+//                                                      } completion:^(BOOL finished) {
+//                                                          [self updateMapViewAnnotations];
+//                                                          self.mapView.userInteractionEnabled = YES;
+//                                                          [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+//                                                      }];
+//                                 } else {
+//
+//                                     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([LocationManagerSingleton sharedSingleton].currentLocation, METERS_PER_MILE * DEFAULT_RADIUS, METERS_PER_MILE * DEFAULT_RADIUS);
+//                                     
+//                                     [UIView animateWithDuration:1.0
+//                                                           delay:0.0
+//                                                         options:UIViewAnimationOptionCurveEaseInOut
+//                                                      animations:^{
+//                                                          [self.mapView setRegion:viewRegion animated:YES];
+//                                                          
+//                                                      } completion:^(BOOL finished) {
+//                                                          [self updateMapViewAnnotations];
+//                                                          self.mapView.userInteractionEnabled = YES;
+//                                                          [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+//                                                      }];
+//                                 }
+                               [self updateMapViewAnnotations];
+                               self.mapView.userInteractionEnabled = YES;
+                               [self.navigationItem setRightBarButtonItem:self.minimizeMapBarButton];
+//                             } else {
+//                                 NSLog(@"NOT FINISHED!");
+//                                 self.mapView.userInteractionEnabled = NO;
+//                                 [self.navigationItem setRightBarButtonItem:self.listBarButton];
+//                                 self.mapFullScreen = NO;
+//
+//                             }
                              
                              
                          }];
@@ -212,7 +236,6 @@
     annotationView.annotation = annotation;
     annotationView.pinColor = alert.group.rating <= 2 ? MKPinAnnotationColorRed : MKPinAnnotationColorGreen;
     annotationView.canShowCallout = YES;
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     return annotationView;
 
@@ -255,19 +278,17 @@
 {
     
     [self setUpMap];
+
     [self processGroups:groups];
     
     self.tableView.hidden = NO;
-
-    
-    if (self.recentAlerts.count) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
-                                    animated:NO
-                              scrollPosition:UITableViewScrollPositionNone];
-        [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    }
-    
     self.loggedIn = true;
+
+    Alert *latestAlert = self.recentAlerts[0];
+    latestAlertTime = latestAlert.time;
+    
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate startGettingUpdates];
 
 }
 
@@ -281,14 +302,28 @@
         group.rating = ((NSNumber *) groupInfo[@"status"]).integerValue;
         [self.groups addObject:group];
     }
+    [Globals globals].groups = self.groups;
     self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
     
+    Alert *latestAlert = self.recentAlerts[0];
+    NSInteger candidateLatestAlertTime = latestAlert.time;
+    if (latestAlertTime < candidateLatestAlertTime && self.loggedIn && ![latestAlert.user isEqualToString:[Globals globals].user]) {
+        if (latestAlert.group.rating > 2) {
+            [Globals showAttractMessageForGroup:latestAlert.group fromTime:latestAlertTime];
+        } else {
+            [Globals showAvoidMessageForGroup:latestAlert.group fromTime:latestAlertTime];
+        }
+        latestAlertTime = candidateLatestAlertTime;
+
+    }
     [self.tableView reloadData];
     [self updateMapViewAnnotations];
 }
 
 - (void)didRegister
 {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate startGettingUpdates];
     self.loggedIn = true;
     self.tableView.hidden = NO;
     [self setUpMap];

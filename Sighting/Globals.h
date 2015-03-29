@@ -25,8 +25,11 @@ static NSString* const kBaseUrls = @"http://sighting-env.elasticbeanstalk.com/";
 + (void)showCompletionAlert:(NSString *)title message:(NSString *)message vc:(UIViewController *)vc;
 + (Globals*)globals;
 + (NSMutableArray *)getRecentAlertsFromGroups:(NSArray *)groups;
++ (NSMutableArray *)getRecentAlertsFromGroups:(NSArray *)groups sinceTime:(NSInteger)time;
 + (UIColor *)getColorForValue:(double)value;
 - (BOOL)inGroup:(Group *)group;
++ (void)showAttractMessageForGroup:(Group *)group fromTime:(NSInteger)time;
++ (void)showAvoidMessageForGroup:(Group *)group fromTime:(NSInteger)time;
 
 @end
 

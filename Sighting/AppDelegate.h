@@ -10,6 +10,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+- (void)startGettingUpdates;
 @property (strong, nonatomic) UIWindow *window;
 
 

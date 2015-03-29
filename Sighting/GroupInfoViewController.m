@@ -31,6 +31,7 @@
 
 @implementation GroupInfoViewController
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     self.title = self.group.name;
@@ -76,6 +77,11 @@
     [self setUpMap];
 }
 
+- (void)dismiss
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)setUpMap
 {
     self.mapView.showsUserLocation = YES;
@@ -85,7 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.group.alerts.count;
+    return self.recentAlerts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,7 +121,6 @@
     annotationView.annotation = annotation;
     annotationView.pinColor = alert.group.rating <= 2 ? MKPinAnnotationColorRed : MKPinAnnotationColorGreen;
     annotationView.canShowCallout = YES;
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     return annotationView;
     

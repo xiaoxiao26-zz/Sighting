@@ -68,6 +68,7 @@
 }
 
 - (IBAction)addAlert:(id)sender {
+    [self.titleTextField resignFirstResponder];
     NSInteger row = [self.picker selectedRowInComponent:0];
 
     Group *group = self.groups[row];

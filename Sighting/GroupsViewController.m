@@ -35,7 +35,7 @@
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(groupUpdates:)
-                                                 name:@"groupUpdates"
+                                                 name:@"groups"
                                                object:nil];
 }
 
@@ -56,7 +56,7 @@
                  Group *group = [[Group alloc] initWithName:name
                                                        desc:description
                                                  alertsInfo:[alerts mutableCopy]];
-                     [self.groupsToExplore addObject:group];
+                [self.groupsToExplore addObject:group];
                  
              }
              dispatch_async(dispatch_get_main_queue(), ^{
@@ -75,7 +75,10 @@
 - (void)addedGroup:(NSNotification *)note
 {
     Group *group = note.userInfo[@"group"];
-    [self.groups addObject:group];
+    if (![self.groups containsObject:group]) {
+        [self.groups addObject:group];
+        NSLog(@"Group: %@", group);
+    }
     if ([self.groupsToExplore containsObject:group]) {
         [self.groupsToExplore removeObject:group];
     }
@@ -85,8 +88,15 @@
 
 - (void)groupUpdates:(NSNotification *)note
 {
-    self.groups = note.userInfo[@"groups"];
-    [Globals globals].groups = self.groups;
+    self.groups = [@[] mutableCopy];
+    for (NSDictionary* groupInfo in note.userInfo[@"groups"]) {
+        Group *group = [[Group alloc] initWithName:groupInfo[@"name"]
+                                              desc:groupInfo[@"description"]
+                                        alertsInfo:groupInfo[@"alerts"]];
+        group.rating = ((NSNumber *) groupInfo[@"status"]).integerValue;
+        [self.groups addObject:group];
+    }
+
     [self.tableView reloadData];
 }
 

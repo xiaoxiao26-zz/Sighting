@@ -58,13 +58,13 @@
                                  @"group":self.group.name,
                                  @"status": [NSString stringWithFormat:@"%d", (int) self.slider.value]};
         [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
-        [manager GET:[Globals urlWithPath:@"join"]
+        [manager GET:[Globals urlWithPath:@"update"]
           parameters:params
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  dispatch_async(dispatch_get_main_queue(), ^{
                      [self.delegate didJoin];
                      [Globals showCompletionAlert:@"Successfully Updated!"
-                                          message:[NSString stringWithFormat:@"Joined group %@", self.group.name]
+                                          message:[NSString stringWithFormat:@"Updated group %@", self.group.name]
                                                vc:self];
                  });
                  
