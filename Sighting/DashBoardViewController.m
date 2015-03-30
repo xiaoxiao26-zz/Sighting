@@ -304,20 +304,23 @@
     }
     [Globals globals].groups = self.groups;
     self.recentAlerts = [Globals getRecentAlertsFromGroups:self.groups];
-    
-    Alert *latestAlert = self.recentAlerts[0];
-    NSInteger candidateLatestAlertTime = latestAlert.time;
-    if (latestAlertTime < candidateLatestAlertTime && self.loggedIn && ![latestAlert.user isEqualToString:[Globals globals].user]) {
-        if (latestAlert.group.rating > 2) {
-            [Globals showAttractMessageForGroup:latestAlert.group fromTime:latestAlertTime];
-        } else {
-            [Globals showAvoidMessageForGroup:latestAlert.group fromTime:latestAlertTime];
+    if (self.recentAlerts.count) {
+        Alert *latestAlert = self.recentAlerts[0];
+        NSInteger candidateLatestAlertTime = latestAlert.time;
+        if (latestAlertTime < candidateLatestAlertTime && self.loggedIn && ![latestAlert.user isEqualToString:[Globals globals].user]) {
+            if (latestAlert.group.rating > 2) {
+                [Globals showAttractMessageForGroup:latestAlert.group fromTime:latestAlertTime];
+            } else {
+                [Globals showAvoidMessageForGroup:latestAlert.group fromTime:latestAlertTime];
+            }
+            latestAlertTime = candidateLatestAlertTime;
+            
         }
-        latestAlertTime = candidateLatestAlertTime;
-
+        [self.tableView reloadData];
+        [self updateMapViewAnnotations];
     }
-    [self.tableView reloadData];
-    [self updateMapViewAnnotations];
+    
+   
 }
 
 - (void)didRegister
